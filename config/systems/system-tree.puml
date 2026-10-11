@@ -1,0 +1,46 @@
+@startuml
+'skinparam groupInheritance 2
+skinparam linetype ortho
+'skinparam style strictuml
+hide empty members
+
+title GNU Guix SD SysConfigs Tree
+
+circle c1 as " "
+circle c2 as " "
+
+abstract class "%base-os" as base_system <<record>> {
+        test
+}
+
+abstract class "%laptop-os" as laptop_base <<record>>
+
+class cyberia <<operating-system>>
+class lunanova <<operating-system>>
+class arisu <<operating-system>>
+class yggdrasil <<operating-system>>
+
+class nonguix_transformation_nvidia << (F,#orchid) procedure >>
+
+' Guix record inheritance via (inherit ...)
+base_system <|-- c1 : "(inherits)  "
+
+c1 -- laptop_base
+c1 -- cyberia
+c1 -- yggdrasil
+
+laptop_base <|--- c2 : "(inherits)  "
+c2 - lunanova
+c2 - arisu
+
+' Applying the functional transformation
+yggdrasil .> nonguix_transformation_nvidia : "(applies)  "
+nonguix_transformation_nvidia <. arisu : "(applies)  "
+
+
+' Force horizontal alignment for straight inheritance drops
+laptop_base -[hidden]right- cyberia
+cyberia -[hidden]right- yggdrasil
+
+lunanova -[hidden]right- arisu
+@enduml

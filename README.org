@@ -19,7 +19,7 @@ Each configuration builds upon an earlier one, as a tree, the root of which cont
 
 Here is my PlantUML code for the architectural diagram:
 
-#+INCLUDE: "config/systems/architecture/system-tree.puml" src plantuml :number-lines t
+[[file:config/systems/architecture/system-tree.puml]]
 
 /As a note:/
 
@@ -28,4 +28,4 @@ At this time, my desktops do not have WiFi nor bluetooth nor any wireless techno
 I  am also tossing up whether to include Linux in the true base of the configuration or whether it would be best to leave nothing set, so that future systems can more easily use Linux-libre or (/any day now......./) the Hurd.
 
 ** Licence
-Everything is licensed under the AGPLv3-or-later licence, unless otherwise specified. If OpenBSD or such somehow gets Guix in the future and for whatever reason they really like my configuration system, I may consider an MPL dual-licence so that their codebase is not "infected", while ensuring this codebase remains free. Any contributions, therefore, are directly surrendered to me so that this can occur. At this time, thoughever, it's only AGPLv3 (or, at your option, any later version).
+Everything is licensed under the AGPLv3-or-later licence, unless otherwise specified. If OpenBSD or such somehow gets Guix in the future and for whatever reason they really like my configuration system, I may consider an MPL dual-licence so that their codebase is not "infected", while ensuring this codebase remains free. Any contributions, therefore, are directly surrendered to me so that this can occur. At this time, thoughever, it's only AGPLv3 (/or, at your option, any later version/).

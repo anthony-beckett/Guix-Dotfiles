@@ -16,3 +16,6 @@ Things will change drastically as I progress in my knowledge of GNU Guix and the
 ** How this is Actually Done
 Each configuration builds upon an earlier one, as a tree, the root of which contains that necessary to run any system, includes software that I will use on every system, etc. This progresses into more concrete forms: mobile platforms, desktops, etc. Finally, these systems implement true instantiations suited for the particular conditions of a machine.
 At this time, my desktops do not have WiFi nor bluetooth nor any wireless technological capability---the motherboard does not include these and I have neither cards nor USB additions that add these features. Therefore, I do not need any drivers for these features in my desktop systems. Therefore, they will not be included in these desktop systems.
+
+** Licence
+Everything is licensed under the AGPLv3-or-later licence, unless otherwise specified.

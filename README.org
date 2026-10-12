@@ -1,0 +1,18 @@
+#+TITLE: README
+#+AUTHOR: Anthony J. Beckett
+
+* Description
+My personal GNU Guix SD configuration built around the ideas of modularity, reusability, simplicity, composition over inheritance, and so forth. Planned using systems engineering techniques.
+The GNU Guix configuration is truly software, therefore it ought to be truly considered as software. Inheritance is "bad", thus it is generally avoided when it just doesn't make sense. However, this doesn't mean that inheritance will never be used. Of course, it will. Arguably, it will be used rather extensively. Though, this architectural decision very well might change.
+
+** On the Paradigm
+Ideally, considering the use of Scheme, we would use functional programming as the overarching paradigm over object oriented programming. However, I don't know how to do this! Maybe I'll figure it out in the future, maybe I'm approaching it wrong from the get go.
+
+Freedom will be prioritised, but (/regrettably/) done away with when it seems impossible or implausible. Ideally, implemented via a module system.
+
+** On Stability
+Things will change drastically as I progress in my knowledge of GNU Guix and the Scheme programming language. So early on stability will not be a priority, though eventually it ought to be.
+
+** How this is Actually Done
+Each configuration builds upon an earlier one, as a tree, the root of which contains that necessary to run any system, includes software that I will use on every system, etc. This progresses into more concrete forms: mobile platforms, desktops, etc. Finally, these systems implement true instantiations suited for the particular conditions of a machine.
+At this time, my desktops do not have WiFi nor bluetooth nor any wireless technological capability---the motherboard does not include these and I have neither cards nor USB additions that add these features. Therefore, I do not need any drivers for these features in my desktop systems. Therefore, they will not be included in these desktop systems.

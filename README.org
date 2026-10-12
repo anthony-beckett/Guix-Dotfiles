@@ -1,8 +1,9 @@
-#+TITLE: README
+#+TITLE: Guix Dotfiles
 #+AUTHOR: Anthony J. Beckett
 
-* Description
 My personal GNU Guix SD configuration built around the ideas of modularity, reusability, simplicity, composition over inheritance, and so forth. Planned using systems engineering techniques.
+
+* Description
 The GNU Guix configuration is truly software, therefore it ought to be truly considered as software. Inheritance is "bad", thus it is generally avoided when it just doesn't make sense. However, this doesn't mean that inheritance will never be used. Of course, it will. Arguably, it will be used rather extensively. Though, this architectural decision very well might change.
 
 ** On the Paradigm

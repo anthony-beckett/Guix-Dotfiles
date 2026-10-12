@@ -3,7 +3,7 @@
 
 My personal GNU Guix SD configuration built around the ideas of modularity, reusability, simplicity, composition over inheritance, and so forth. Planned using systems engineering techniques.
 
-* Description
+** Description
 The GNU Guix configuration is truly software, therefore it ought to be truly considered as software. Inheritance is "bad", thus it is generally avoided when it just doesn't make sense. However, this doesn't mean that inheritance will never be used. Of course, it will. Arguably, it will be used rather extensively. Though, this architectural decision very well might change.
 
 ** On the Paradigm
@@ -15,8 +15,13 @@ Freedom will be prioritised, but (/regrettably/) done away with when it seems im
 Things will change drastically as I progress in my knowledge of GNU Guix and the Scheme programming language. So early on stability will not be a priority, though eventually it ought to be.
 
 ** How this is Actually Done
-Each configuration builds upon an earlier one, as a tree, the root of which contains that necessary to run any system, includes software that I will use on every system, etc. This progresses into more concrete forms: mobile platforms, desktops, etc. Finally, these systems implement true instantiations suited for the particular conditions of a machine.
-At this time, my desktops do not have WiFi nor bluetooth nor any wireless technological capability---the motherboard does not include these and I have neither cards nor USB additions that add these features. Therefore, I do not need any drivers for these features in my desktop systems. Therefore, they will not be included in these desktop systems.
+Each configuration builds upon an earlier one, as a tree, the root of which contains that necessary to run any system, includes software that I will use on every system, etc. This progresses into more concrete forms: mobile platforms, desktops, etc. Finally, these systems implement true instantiations suited for the particular conditions of a machine. Ideally, these won't be very "deep" and really could be done away with in the future for a more modular system; where every aspect of the system is module---or perhaps simply made *more* modular, whilst retaining the tree system! For instance, I probably ought not need to set up the same modules for every laptop.... It might be easier to have an abstract laptop base that takes on the modules I want for all my laptops that each instantiation then implements. Alternatively, "laptop" itself is a module that each system simply takes. Much to consider.
+
+As a note:
+
+At this time, my desktops do not have WiFi nor bluetooth nor any wireless technological capability---the motherboard does not include these and I have neither cards nor USB additions that add these features. Thus, I do not need any drivers for these features in my desktop systems. Therefore, they will not be included in these desktop systems.
+
+I  am also tossing up whether to include Linux in the true base of the configuration or whether it would be best to leave nothing set, so that future systems can more easily use Linux-libre or (/any day now......./) the Hurd.
 
 ** Licence
-Everything is licensed under the AGPLv3-or-later licence, unless otherwise specified.
+Everything is licensed under the AGPLv3-or-later licence, unless otherwise specified. If OpenBSD or such somehow gets Guix in the future and for whatever reason they really like my configuration system, I may consider an MPL dual-licence so that their codebase is not "infected", while ensuring this codebase remains free. Any contributions, therefore, are directly surrendered to me so that this can occur. At this time, thoughever, it's only AGPLv3 (or, at your option, any later version).

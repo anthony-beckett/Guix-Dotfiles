@@ -19,7 +19,7 @@ Each configuration builds upon an earlier one, as a tree, the root of which cont
 
 Here is my PlantUML code for the architectural diagram:
 
-#+INCLUDE: "config/systems/architecture/system-tree.puml" src plantuml
+#+INCLUDE: "config/systems/architecture/system-tree.puml" src plantuml :number-lines t
 
 /As a note:/
 

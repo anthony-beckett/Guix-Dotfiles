@@ -17,7 +17,11 @@ Things will change drastically as I progress in my knowledge of GNU Guix and the
 ** How this is Actually Done
 Each configuration builds upon an earlier one, as a tree, the root of which contains that necessary to run any system, includes software that I will use on every system, etc. This progresses into more concrete forms: mobile platforms, desktops, etc. Finally, these systems implement true instantiations suited for the particular conditions of a machine. Ideally, these won't be very "deep" and really could be done away with in the future for a more modular system; where every aspect of the system is module---or perhaps simply made *more* modular, whilst retaining the tree system! For instance, I probably ought not need to set up the same modules for every laptop.... It might be easier to have an abstract laptop base that takes on the modules I want for all my laptops that each instantiation then implements. Alternatively, "laptop" itself is a module that each system simply takes. Much to consider.
 
-As a note:
+Here is my PlantUML code for the architectural diagram:
+
+#+INCLUDE: "config/systems/architecture/system-tree.puml" src plantuml
+
+/As a note:/
 
 At this time, my desktops do not have WiFi nor bluetooth nor any wireless technological capability---the motherboard does not include these and I have neither cards nor USB additions that add these features. Thus, I do not need any drivers for these features in my desktop systems. Therefore, they will not be included in these desktop systems.
 

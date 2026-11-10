@@ -1,8 +1,11 @@
 (define-module (config systems t450s)
   #:use-module (gnu)
   #:use-module (gnu system)
-  #:use-module (nongnu packages linux)
+  #:use-module (gnu services desktop)
+  #:use-module (gnu packages emacs)
   #:use-module (nongnu packages video)
+  #:use-module (nongnu packages linux)
+  #:use-module (nongnu system linux-initrd)
   #:use-module (config systems functions laptop)
   #:use-module (config systems functions desktop)
   #:use-module (config systems functions wireless)
@@ -48,24 +51,23 @@
 
 
 (define lunanova (operating-system
-                  (inherit laptop-system)
                   (host-name "lunanova")
                   (kernel linux)
-                  (firmware (list
+                  (firmware (cons*
 	                         linux-firmware
 	                         i915-firmware
-	                         intel-microcode))
+				 sof-firmware
+	                         intel-microcode
+				 %base-firmware))
                   (initrd microcode-initrd)
                   (initrd-modules
-                   (append
                     (list
 	                 "aesni_intel"
 	                 "cryptd"
 	                 "gf128mul"
 	                 "xts"
 	                 "i915"
-	                 ) %base-initrd-modules))
-                  (firmware (cons* sof-firmware linux-firmware %base-firmware))
+	                 ))
                   (timezone "Australia/Adelaide")
                   (locale "en_AU.utf8")
                   (keyboard-layout (keyboard-layout "us"))
@@ -85,11 +87,6 @@
                                                         )))
                                %base-user-accounts))
 
-                  (bootloader (bootloader-configuration
-                               (bootloader grub-bootloader)
-                               (targets '("/dev/vda"))
-                               (terminal-outputs '(console))))
-
                   (services
                    (cons*
                     (service gnome-keyring-service-type)
@@ -101,13 +98,6 @@
                              %base-packages
                              ))
 
-                  (file-systems (cons
-                                 (file-system
-                                  (mount-point "/tmp")
-                                  (device "none")
-                                  (type "tmpfs")
-                                  (check? #f))
-                                 %base-file-systems))
                   (bootloader (bootloader-configuration
 		                       (bootloader grub-efi-bootloader)
 		                       (targets (list "/boot/efi"))
@@ -125,33 +115,38 @@
                   ;; file system identifiers there ("UUIDs") can be obtained
                   ;; by running 'blkid' in a terminal.
                   (file-systems (cons* (file-system
-			                            (mount-point "/")
-			                            (device "/dev/mapper/cryptroot")
-			                            (type "btrfs")
-			                            (flags '(no-atime))
-			                            (options "compress,ssd_spread,discard=async")
-			                            (dependencies (list %cryptroot)))
+					 (mount-point "/")
+					 (device "/dev/mapper/cryptroot")
+					 (type "btrfs")
+					 (flags '(no-atime))
+					 (options "compress,ssd_spread,discard=async")
+					 (dependencies (list %cryptroot)))
 
-		                               (file-system
-			                            (device "/dev/mapper/cryptroot")
-			                            (mount-point "/swap")
-			                            (type "btrfs")
-			                            (options "subvol=swap,nodatacow,ssd")
-			                            (dependencies (list %cryptroot)))
+				       (file-system
+					 (mount-point "/tmp")
+					 (device "none")
+					 (type "tmpfs")
+					 (check? #f))
+				       (file-system
+					 (device "/dev/mapper/cryptroot")
+					 (mount-point "/swap")
+					 (type "btrfs")
+					 (options "subvol=swap,nodatacow,ssd")
+					 (dependencies (list %cryptroot)))
 
-		                               (file-system
-			                            (mount-point "/boot/efi")
-			                            (device (uuid "86A8-D792" 'fat32))
-			                            (type "vfat"))
+				       (file-system
+					 (mount-point "/boot/efi")
+					 (device (uuid "86A8-D792" 'fat32))
+					 (type "vfat"))
 
-		                               (file-system
-			                            (mount-point "/home")
-			                            (device "/dev/mapper/crypthome")
-			                            (type "ext4")
-			                            (flags '(no-atime))
-			                            (options "commit=60,errors=remount-ro")
-			                            (dependencies (list %crypthome)))
-		                               %base-file-systems))
+				       (file-system
+					 (mount-point "/home")
+					 (device "/dev/mapper/crypthome")
+					 (type "ext4")
+					 (flags '(no-atime))
+					 (options "commit=60,errors=remount-ro")
+					 (dependencies (list %crypthome)))
+				       %base-file-systems))
 
                   (swap-devices
                    (list

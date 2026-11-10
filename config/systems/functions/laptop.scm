@@ -3,6 +3,7 @@
   #:use-module (guix)
   #:use-module (gnu services desktop)
   #:use-module (gnu services pm)
+  #:use-module (gnu packages linux)
   #:export (laptop)
   )
 

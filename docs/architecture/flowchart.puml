@@ -1,0 +1,48 @@
+@startuml
+hide empty description
+hide empty members
+
+'class base
+'class desktop
+'class server
+'class laptop
+'class workstation
+'class intel
+'class nvidia
+'class amd
+''
+'base <-- desktop
+'base <-- server
+'desktop <-- laptop
+'desktop <-- workstation
+'laptop <-- nvidia
+'laptop <-- intel
+'workstation <-- amd
+'workstation <-- nvidia
+'
+
+circle " " as r1
+circle " " as r2
+'rectangle " " as r3
+
+class base {
+        -package_list
+        -users
+}
+
+class device_type {
+        -graphics
+        -laptop_services
+}
+
+class instance {
+        -system_name
+        -partitioning
+}
+
+base -down-> r1
+r1 -right-> device_type
+device_type -down-> r2
+r2 -right-> instance
+
+@enduml

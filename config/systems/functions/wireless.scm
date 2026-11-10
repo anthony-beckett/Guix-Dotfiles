@@ -3,6 +3,7 @@
   #:use-module (guix)
   #:use-module (gnu services)
   #:use-module (gnu services networking)
+  #:use-module (gnu services desktop)
   #:export (wireless)
   )
 

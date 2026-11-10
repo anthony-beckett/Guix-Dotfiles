@@ -56,18 +56,18 @@
                   (firmware (cons*
 	                         linux-firmware
 	                         i915-firmware
-				 sof-firmware
+				             sof-firmware
 	                         intel-microcode
-				 %base-firmware))
+				             %base-firmware))
                   (initrd microcode-initrd)
                   (initrd-modules
-                    (list
-	                 "aesni_intel"
-	                 "cryptd"
-	                 "gf128mul"
-	                 "xts"
-	                 "i915"
-	                 ))
+                   (list
+	                "aesni_intel"
+	                "cryptd"
+	                "gf128mul"
+	                "xts"
+	                "i915"
+	                ))
                   (timezone "Australia/Adelaide")
                   (locale "en_AU.utf8")
                   (keyboard-layout (keyboard-layout "us"))
@@ -115,38 +115,38 @@
                   ;; file system identifiers there ("UUIDs") can be obtained
                   ;; by running 'blkid' in a terminal.
                   (file-systems (cons* (file-system
-					 (mount-point "/")
-					 (device "/dev/mapper/cryptroot")
-					 (type "btrfs")
-					 (flags '(no-atime))
-					 (options "compress,ssd_spread,discard=async")
-					 (dependencies (list %cryptroot)))
+					                    (mount-point "/")
+					                    (device "/dev/mapper/cryptroot")
+					                    (type "btrfs")
+					                    (flags '(no-atime))
+					                    (options "compress,ssd_spread,discard=async")
+					                    (dependencies (list %cryptroot)))
 
-				       (file-system
-					 (mount-point "/tmp")
-					 (device "none")
-					 (type "tmpfs")
-					 (check? #f))
-				       (file-system
-					 (device "/dev/mapper/cryptroot")
-					 (mount-point "/swap")
-					 (type "btrfs")
-					 (options "subvol=swap,nodatacow,ssd")
-					 (dependencies (list %cryptroot)))
+				                       (file-system
+					                    (mount-point "/tmp")
+					                    (device "none")
+					                    (type "tmpfs")
+					                    (check? #f))
+				                       (file-system
+					                    (device "/dev/mapper/cryptroot")
+					                    (mount-point "/swap")
+					                    (type "btrfs")
+					                    (options "subvol=swap,nodatacow,ssd")
+					                    (dependencies (list %cryptroot)))
 
-				       (file-system
-					 (mount-point "/boot/efi")
-					 (device (uuid "86A8-D792" 'fat32))
-					 (type "vfat"))
+				                       (file-system
+					                    (mount-point "/boot/efi")
+					                    (device (uuid "86A8-D792" 'fat32))
+					                    (type "vfat"))
 
-				       (file-system
-					 (mount-point "/home")
-					 (device "/dev/mapper/crypthome")
-					 (type "ext4")
-					 (flags '(no-atime))
-					 (options "commit=60,errors=remount-ro")
-					 (dependencies (list %crypthome)))
-				       %base-file-systems))
+				                       (file-system
+					                    (mount-point "/home")
+					                    (device "/dev/mapper/crypthome")
+					                    (type "ext4")
+					                    (flags '(no-atime))
+					                    (options "commit=60,errors=remount-ro")
+					                    (dependencies (list %crypthome)))
+				                       %base-file-systems))
 
                   (swap-devices
                    (list
